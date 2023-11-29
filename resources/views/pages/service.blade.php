@@ -1,39 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apprendre Laravel</title>
-    <!-- Favicon -->
-    <link href="/resources/img/laravel8530.jpg" rel="icon">
-   
-     <!-- Boostrap -->
+{{--Hériter de la page master.blade.php--}}
+@extends('layouts.master')
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
-</head>
-<body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+@section('title')
+Service
+@endsection
 
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{url('/about')}}">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="{{url('/about')}}">About</a>
-            <a class="nav-link" href="{{url('/apropos')}}">Apropos</a>
-            <a class="nav-link" href="{{url('/service')}}">Service</a>
-            
-        </div>
-        </div>
-  </div>
-</nav>
 
-<div class="container">
-   <h1>Bienvenue a la page Service</h1>
+{{--Mettre le contenu --}}
+@section('Contenu')
+    <h1>Bienvenue sur la page des services </h1>
+
+@if (Session::has('status'))
+<div class="alert alert-success" >
+    {{Session::get('status')}}
 </div>
+    
+@endif
+@foreach ($produits as $produit)
 
-</body>
-</html>
+ <div class="well">
+   <h1><a href="/show/{{$produit->id}}">{{$produit->product_name}}</a></h1>
+ </div>
+
+ @endforeach
+{{$produits->links()}}
+
+@endsection
