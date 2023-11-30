@@ -19,7 +19,7 @@ show
      <h2>{{$produit->created_at}}</h2>
      <hr>
 
-     <a href="" class="btn btn-default">Edit</a>
+     <a href="{{ url('editeproduct', [$produit->id]) }}" class="btn btn-default">Edit</a>
      <form action="{{ url('deleteproduct', [$produit->id]) }}" method="POST" class="pull-right">
         @csrf
         @method('DELETE')

@@ -28,4 +28,6 @@ Route::get('/create', [productController :: class , 'create']);
 Route::post('/saveproduct', [productController :: class , 'saveproduct']);
 
 Route::delete('/deleteproduct/{id}', [productController :: class , 'deleteproduct']);
+Route::get('/editeproduct/{id}', [productController :: class , 'editeproduct']); 
 
+Route::PUT('/updateproduct/{id}', [productController :: class , 'updateproduct']); 

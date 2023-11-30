@@ -17,7 +17,7 @@ class productController extends Controller
 
     public function saveproduct (Request $request) {
 
-
+// systeme de validation du formulaire au niveau serveur
         $this->validate($request, [
             'product_name'=> 'required',
             'product_price'=> 'required',
@@ -46,4 +46,36 @@ class productController extends Controller
 
 
     }
+
+    public function editeproduct ($id) {
+        $produit = Product :: find($id);
+       
+        return view('pages.editeproduct')->with('produit',$produit);
+
+    }
+
+    public function updateproduct (Request $request , $id) {
+
+        // systeme de validation du formulaire au niveau serveur
+        $this->validate($request, [
+            'product_name'=> 'required',
+            'product_price'=> 'required',
+            'product_description'=> 'required',
+        
+        ]);
+
+        $produit = Product :: find($id);
+
+        $produit->product_name = $request->input('product_name');
+        $produit->product_price = $request->input('product_price');
+        $produit->product_description = $request->input('product_description');
+   
+        $produit->update();;// pour MODIFIER
+        
+        return redirect('/service')->with('status','Votre produita été modifié avec succes !!');
+
+    }
+
+
+
 }

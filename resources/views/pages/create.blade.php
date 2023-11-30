@@ -28,7 +28,7 @@ create
     </div>
     <div class="form-group">
         <label>Product Price</label>
-        <input type="text" name="product_price" placeholder="Product Price" class="form-control" required>
+        <input type="number" name="product_price" placeholder="Product Price" class="form-control" required>
     </div>
     <div class="form-group">
         <label>Product description</label>
